@@ -14,9 +14,9 @@
     "npm": ">=8.9.0"
   },
   "scripts": {
-    "build": "babel src -d build/src",
-    "unit-test": "npm run build && mocha 'test/unit/**/*.test.js' --recursive --timeout 0 --exit --reporter mochawesome --reporter-options reportDir=./website/report",
-    "integration-test": "npm run build && mocha 'test/integration/**/*.test.js' --recursive --timeout 0 --exit --reporter mochawesome --reporter-options reportDir=./website/report",
+    "build": "babel src -d build/src --ignore src/Docs.js --source-maps",
+    "unit-test": "npm run build && mocha 'build/src/test/unit/**/*.test.js' --recursive --timeout 0 --exit --reporter mochawesome --reporter-options reportDir=./website/report",
+    "integration-test": "npm run build && mocha 'build/src/test/integration/**/*.test.js' --recursive --timeout 0 --exit --reporter mochawesome --reporter-options reportDir=./website/report",
     "start-dev": "npm run build && node build/index.js",
     "start": "npm run build && node build/index.js",
     "test": "npm run unit-test && npm run integration-test"
