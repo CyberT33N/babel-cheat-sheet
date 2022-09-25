@@ -14,7 +14,7 @@
     "npm": ">=8.9.0"
   },
   "scripts": {
-    "build": "babel src -d build/src --ignore src/Docs.js --source-maps",
+    "build": "babel src -d build/src --ignore src/Docs.js --source-maps --copy-files",
     "unit-test": "npm run build && mocha 'build/src/test/unit/**/*.test.js' --recursive --timeout 0 --exit --reporter mochawesome --reporter-options reportDir=./website/report",
     "integration-test": "npm run build && mocha 'build/src/test/integration/**/*.test.js' --recursive --timeout 0 --exit --reporter mochawesome --reporter-options reportDir=./website/report",
     "start-dev": "npm run build && node build/index.js",
@@ -135,4 +135,13 @@ __________________________________________________________
 ### Ignore files for build
 ```
 babel . --ignore node_modules,test --out-dir dist
+```
+
+
+
+<br><br>
+
+### Copy all files
+```
+babel src --out-dir lib --copy-files
 ```
